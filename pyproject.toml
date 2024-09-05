@@ -16,4 +16,4 @@ dependencies = [
 ]
 
 [project.scripts]
-start_inference = "src:main"
+start_inference = "src.main:main"
