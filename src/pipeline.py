@@ -1,3 +1,4 @@
+import torch
 from PIL.Image import Image
 from diffusers import StableDiffusionXLPipeline
 from pipelines.models import TextToImageRequest
@@ -9,6 +10,7 @@ def load_pipeline() -> StableDiffusionXLPipeline:
         "stablediffusionapi/newdream-sdxl-20",
         revision="4bdd502bca7abd1ea57ee12fba0b0f23052958cc",
         cache_dir="./models",
+        torch_dtype=torch.float16,
         local_files_only=True,
     ).to("cuda")
 
@@ -26,4 +28,4 @@ def infer(request: TextToImageRequest, pipeline: StableDiffusionXLPipeline) -> I
         width=request.width,
         height=request.height,
         generator=generator,
-    ).images
+    ).images[0]
