@@ -6,7 +6,7 @@ from pipelines.models import TextToImageRequest
 
 from pipeline import load_pipeline, infer
 
-SOCKET = "/api/inferences.sock"
+SOCKET = "/sandbox/inferences.sock"
 
 
 def main():
