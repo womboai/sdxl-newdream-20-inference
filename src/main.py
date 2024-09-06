@@ -19,8 +19,6 @@ def main():
         connection, _ = inference_socket.accept()
 
         with connection:
-            connection.send(b'\xFF') # Ready marker
-
             while True:
                 size = int.from_bytes(connection.recv(2), byteorder)
 
