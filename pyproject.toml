@@ -12,7 +12,7 @@ dependencies = [
     "transformers==4.41.2",
     "accelerate==0.31.0",
     "omegaconf==2.3.0",
-    "edge-maxxing-pipelines @ git+ssh://git@github.com/womboai/edge-maxxing@docker-submissions#subdirectory=pipelines",
+    "edge-maxxing-pipelines @ git+https://github.com/womboai/edge-maxxing@docker-submissions#subdirectory=pipelines",
 ]
 
 [project.scripts]
