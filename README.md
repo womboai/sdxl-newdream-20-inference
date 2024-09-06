@@ -9,4 +9,4 @@ Some recommendations are as follows:
 - Change `install_args.txt` to add `pip install` arguments to be used when installing the package
 
 For testing, you need a docker container with pytorch and ubuntu 22.04,
-you can download your listed dependencies with `pip install $(cat install_args.txt) -e .`, and then running `src/main.py`
+you can download your listed dependencies with `pip install $(cat install_args.txt) -e .`, and then running `start_inference`
