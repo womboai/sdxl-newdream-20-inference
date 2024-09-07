@@ -3,6 +3,7 @@ from socket import socket, AF_UNIX, SOCK_STREAM
 from sys import byteorder
 from os import chmod
 
+from PIL.JpegImagePlugin import JpegImageFile
 from pipelines.models import TextToImageRequest
 
 from pipeline import load_pipeline, infer
@@ -30,7 +31,7 @@ def main():
                 image = infer(request, pipeline)
 
                 data = BytesIO()
-                image.save(data, format=image.format)
+                image.save(data, format=JpegImageFile.format)
 
                 packet = data.getvalue()
 
