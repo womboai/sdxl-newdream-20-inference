@@ -1,6 +1,7 @@
 from io import BytesIO
 from socket import socket, AF_UNIX, SOCK_STREAM
 from sys import byteorder
+from os import chmod
 
 from pipelines.models import TextToImageRequest
 
@@ -14,6 +15,8 @@ def main():
 
     with socket(AF_UNIX, SOCK_STREAM) as inference_socket:
         inference_socket.bind(SOCKET)
+
+        chmod(SOCKET, 0o777)
 
         inference_socket.listen(1)
         connection, _ = inference_socket.accept()
