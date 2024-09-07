@@ -1,6 +1,7 @@
 from io import BytesIO
 from multiprocessing.connection import Listener
 from os import chmod
+from os.path import abspath
 from pathlib import Path
 
 from PIL.JpegImagePlugin import JpegImageFile
@@ -8,7 +9,7 @@ from pipelines.models import TextToImageRequest
 
 from pipeline import load_pipeline, infer
 
-SOCKET = Path(__file__).parent / "inferences.sock"
+SOCKET = abspath(Path(__file__).parent / "inferences.sock")
 
 
 def main():
@@ -17,7 +18,8 @@ def main():
 
     print(f"Pipeline loaded")
 
-    with Listener(str(SOCKET)) as listener:
+    print(f"Creating socket at '{SOCKET}'")
+    with Listener(SOCKET) as listener:
         chmod(SOCKET, 0o777)
 
         print(f"Awaiting connections")
