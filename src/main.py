@@ -9,7 +9,7 @@ from pipelines.models import TextToImageRequest
 
 from pipeline import load_pipeline, infer
 
-SOCKET = abspath(Path(__file__).parent / "inferences.sock")
+SOCKET = abspath(Path(__file__).parent.parent / "inferences.sock")
 
 
 def main():
