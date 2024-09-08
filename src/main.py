@@ -27,7 +27,12 @@ def main():
             print(f"Connected")
 
             while True:
-                request = TextToImageRequest.model_validate_json(connection.recv_bytes().decode("utf-8"))
+                try:
+                    request = TextToImageRequest.model_validate_json(connection.recv_bytes().decode("utf-8"))
+                except EOFError:
+                    print(f"Inference socket exiting")
+
+                    return
 
                 image = infer(request, pipeline)
 
