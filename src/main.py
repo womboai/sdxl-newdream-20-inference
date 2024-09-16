@@ -1,7 +1,7 @@
 from io import BytesIO
 from multiprocessing.connection import Listener
-from os import chmod
-from os.path import abspath
+from os import chmod, remove
+from os.path import abspath, exists
 from pathlib import Path
 
 from PIL.JpegImagePlugin import JpegImageFile
@@ -16,9 +16,11 @@ def main():
     print(f"Loading pipeline")
     pipeline = load_pipeline()
 
-    print(f"Pipeline loaded")
+    print(f"Pipeline loaded, creating socket at '{SOCKET}'")
 
-    print(f"Creating socket at '{SOCKET}'")
+    if exists(SOCKET):
+        remove(SOCKET)
+
     with Listener(SOCKET) as listener:
         chmod(SOCKET, 0o777)
 
