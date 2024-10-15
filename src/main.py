@@ -10,7 +10,7 @@ import torch
 from PIL.JpegImagePlugin import JpegImageFile
 from pipelines.models import TextToImageRequest
 
-from pipeline import load_pipeline
+from pipeline import load_pipeline, infer
 
 SOCKET = abspath(Path(__file__).parent.parent / "inferences.sock")
 VERSION = 6
@@ -24,7 +24,7 @@ def main():
     atexit.register(at_exit)
 
     print(f"Loading pipeline")
-    infer = load_pipeline()
+    pipeline = load_pipeline()
 
     print(f"Pipeline loaded, creating socket at '{SOCKET}'")
 
@@ -48,7 +48,7 @@ def main():
 
                     return
 
-                image = infer(request)
+                image = infer(request, pipeline)
 
                 data = BytesIO()
                 image.save(data, format=JpegImageFile.format)
