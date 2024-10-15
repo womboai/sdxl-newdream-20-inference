@@ -1,20 +1,30 @@
+import atexit
 from io import BytesIO
 from multiprocessing.connection import Listener
 from os import chmod, remove
 from os.path import abspath, exists
 from pathlib import Path
 
+import torch
+
 from PIL.JpegImagePlugin import JpegImageFile
 from pipelines.models import TextToImageRequest
 
-from pipeline import load_pipeline, infer
+from pipeline import load_pipeline
 
 SOCKET = abspath(Path(__file__).parent.parent / "inferences.sock")
+VERSION = 6
+
+
+def at_exit():
+    torch.cuda.empty_cache()
 
 
 def main():
+    atexit.register(at_exit)
+
     print(f"Loading pipeline")
-    pipeline = load_pipeline()
+    infer = load_pipeline()
 
     print(f"Pipeline loaded, creating socket at '{SOCKET}'")
 
@@ -28,6 +38,8 @@ def main():
         with listener.accept() as connection:
             print(f"Connected")
 
+            connection.send_bytes(bytes([VERSION]))
+
             while True:
                 try:
                     request = TextToImageRequest.model_validate_json(connection.recv_bytes().decode("utf-8"))
@@ -36,7 +48,7 @@ def main():
 
                     return
 
-                image = infer(request, pipeline)
+                image = infer(request)
 
                 data = BytesIO()
                 image.save(data, format=JpegImageFile.format)
