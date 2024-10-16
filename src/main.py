@@ -13,7 +13,6 @@ from pipelines.models import TextToImageRequest
 from pipeline import load_pipeline, infer
 
 SOCKET = abspath(Path(__file__).parent.parent / "inferences.sock")
-VERSION = 6
 
 
 def at_exit():
@@ -37,8 +36,6 @@ def main():
         print(f"Awaiting connections")
         with listener.accept() as connection:
             print(f"Connected")
-
-            connection.send_bytes(bytes([VERSION]))
 
             while True:
                 try:
