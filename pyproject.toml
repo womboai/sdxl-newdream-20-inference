@@ -18,6 +18,3 @@ dependencies = [
 
 [project.scripts]
 start_inference = "main:main"
-
-[tool.uv.pip]
-require-hashes = true
