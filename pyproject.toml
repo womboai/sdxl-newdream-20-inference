@@ -2,8 +2,9 @@
 name = "edge-maxxing-4090-newdream"
 version = "1.0.0"
 description = "An edge-maxxing model submission for the 4090 newdream contest"
-readme = "README.md"
 authors = ["WOMBO <hello@w.ai>"]
+readme = "README.md"
+packages = [{ include = "src" }]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.11"
@@ -15,7 +16,7 @@ torch = "2.4.1"
 edge-maxxing-pipelines = { git = "https://github.com/womboai/edge-maxxing.git", rev = "f429c7d229fb505b253de7a04c873b9ffed21fc4", subdirectory = "pipelines" }
 
 [tool.poetry.scripts]
-start_inference = "main:main"
+start_inference = "src.main:main"
 
 [build-system]
 requires = ["poetry-core"]
