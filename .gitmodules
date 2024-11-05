@@ -1,4 +1,0 @@
-[submodule "newdream-sdxl-20"]
-	path = models/newdream-sdxl-20
-	url = https://huggingface.co/stablediffusionapi/newdream-sdxl-20
-	branch = main
