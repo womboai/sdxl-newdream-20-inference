@@ -12,7 +12,7 @@ Some recommendations are as follows:
 For testing, you need a docker container with pytorch and ubuntu 22.04.
 You can download your listed dependencies with `uv` installed with:
 ```bash
-pipx install uv
 pipx ensurepath
+pipx install uv
 ```
 You can then relock with `uv lock`, and then run with `uv run start_inference`
