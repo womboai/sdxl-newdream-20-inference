@@ -17,7 +17,9 @@ dependencies = [
 ]
 
 [tool.edge-maxxing]
-model = "stablediffusionapi/newdream-sdxl-20"
+models = [
+    "stablediffusionapi/newdream-sdxl-20"
+]
 
 [project.scripts]
 start_inference = "main:main"
