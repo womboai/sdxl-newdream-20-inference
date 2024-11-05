@@ -97,7 +97,7 @@ wheels = [
 
 [[package]]
 name = "edge-maxxing-4090-newdream"
-version = "1.0.0"
+version = "7"
 source = { editable = "." }
 dependencies = [
     { name = "accelerate" },

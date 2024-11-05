@@ -6,7 +6,8 @@ build-backend = "setuptools.build_meta"
 name = "edge-maxxing-4090-newdream"
 description = "An edge-maxxing model submission for the 4090 newdream contest"
 requires-python = ">=3.10,<3.11"
-version = "6"
+version = "7"
+model = "stablediffusionapi/newdream-sdxl-20"
 dependencies = [
     "diffusers==0.30.2",
     "transformers==4.41.2",

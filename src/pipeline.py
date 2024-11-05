@@ -7,7 +7,7 @@ from torch import Generator
 
 def load_pipeline() -> StableDiffusionXLPipeline:
     pipeline = StableDiffusionXLPipeline.from_pretrained(
-        "./models/newdream-sdxl-20",
+        "stablediffusionapi/newdream-sdxl-20",
         torch_dtype=torch.float16,
         local_files_only=True,
     ).to("cuda")
