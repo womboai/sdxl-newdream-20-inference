@@ -11,7 +11,7 @@ Some recommendations are as follows:
 - Ensure the entire repository (excluding dependencies and HuggingFace models) is under 16MB
 
 For testing, you need a docker container with pytorch and ubuntu 22.04.
-You can download your listed dependencies with `uv` installed with:
+You can download your listed dependencies with `uv`, installed with:
 ```bash
 pipx ensurepath
 pipx install uv
