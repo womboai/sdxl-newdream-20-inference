@@ -7,7 +7,6 @@ name = "edge-maxxing-4090-newdream"
 description = "An edge-maxxing model submission for the 4090 newdream contest"
 requires-python = ">=3.10,<3.11"
 version = "7"
-model = "stablediffusionapi/newdream-sdxl-20"
 dependencies = [
     "diffusers==0.30.2",
     "transformers==4.41.2",
@@ -16,6 +15,9 @@ dependencies = [
     "torch==2.4.1",
     "edge-maxxing-pipelines @ git+https://github.com/womboai/edge-maxxing@8d8ff45863416484b5b4bc547782591bbdfc696a#subdirectory=pipelines",
 ]
+
+[tool.edge-maxxing]
+model = "stablediffusionapi/newdream-sdxl-20"
 
 [project.scripts]
 start_inference = "main:main"
